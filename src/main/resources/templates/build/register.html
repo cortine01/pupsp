@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMCpagos</title>
+    <link rel="icon" href="src/icon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="logincss.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="src/logo.png" alt="Logo Empresa">
+        </div>
+        <div class="auth-buttons">
+            <a th:href="@{/register}" class="register-btn">Registrarse</a>
+            <a th:href="@{/login}" class="login-btn">Iniciar Sesión</a>
+        </div>
+    </header>
+    <div class="login-wrap">
+        <h2>Registro</h2>
+        <div class="form">
+          <input type="text" placeholder="Nombre" name="un" />
+          <input type="text" placeholder="Apellido" name="pw" />
+          <input type="email" placeholder="Correo electronico" name="email" />
+          <input type="password" placeholder="Contraseña" name="pw" />
+          <button> Iniciar Sesión </button>
+          <a href="login.html"> <p> ¿Ya tienes una cuenta? Inicia sesión </p></a>
+        </div>
+      </div>

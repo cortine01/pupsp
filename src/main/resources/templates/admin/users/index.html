@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://wwww.thymeleaf.org/thymeleaf-extras-springsecurity3"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Users</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body style="text-align: center;">
+    <h2>Table Users</h2>
+
+    <div style="width: 80%; margin: auto; padding: auto;">
+        <a th:href="@{/addUsers}"><button style="margin-bottom: 1rem;" class="btn btn-secondary" type="button">Add User</button></a>
+        
+        <table class="table table-dark table-striped">
+            <thead>
+                <th>id</th>
+                <th>name</th>
+                <th>lastName</th>
+                <th>email</th>
+                <th>password</th>
+                <th>registerDate</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr th:each="Users:${Users}">
+                    <td><font th:text="${Users.id}"></font></td>
+                    <td><font th:text="${Users.name}"></font></td>
+                    <td><font th:text="${Users.lastName}"></font></td>
+                    <td><font th:text="${Users.email}"></font></td>
+                    <td><font th:text="${Users.password}"></font></td>
+                    <td><font th:text="${Users.registerDate}"></font></td>
+                    <td><a th:href="@{/editUsers/}+${Users.id}"><i class="large material-icons">edit</i><a th:href="@{/deleteUsers/}+${Users.id}"><i class="large material-icons">delete</i></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

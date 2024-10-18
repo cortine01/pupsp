@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMCpagos</title>
+    <link rel="icon" href="src/icon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="src/logo.png" alt="Logo Empresa">
+        </div>
+        <div class="auth-buttons">
+            <a th:href="@{/register}" class="register-btn">Registrarse</a>
+            <a th:href="@{/login}" class="login-btn">Iniciar Sesión</a>
+        </div>
+    </header>
+    <div class="banner"><img src="src/banner.jpg" alt="banner"></div>
+    <main>
+        <section class="partners">
+            <h2>Nuestros Socios</h2>
+            <p>Son las empresas de servicios públicos del área metropolitana de Cúcuta, estas son:</p>
+            <div class="logos-grid">
+                <div class="logo-item"> <img src="src/akpital.png" alt="Logo Aguas Kpital"> </div>
+                <div class="logo-item"> <img src="src/cens.png" alt="Logo CENS"> </div>
+                <div class="logo-item"> <img src="src/aqualia.png" alt="Logo Aqualia"> </div>
+                <div class="logo-item"> <img src="src/gases_oriente.png" alt="Logo Gases del Oriente"> </div>
+                <div class="logo-item"> <img src="src/agua_patios.png" alt="Logo Agua de Los Patios"> </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 AMCpagos</p>
+    </footer>
+</body>
+</html>
