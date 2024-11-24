@@ -5,7 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.example.pupsp.entities.Users;
 
-@Repository
-public interface UsersService extends JpaRepository<Users, Integer>{
 
+@Repository
+public interface UsersRepository extends JpaRepository<Users, Integer>{
+    public Users findByEmail(String email);
 }

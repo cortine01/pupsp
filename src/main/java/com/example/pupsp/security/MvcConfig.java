@@ -1,4 +1,4 @@
-package com.example.pupsp.config;
+package com.example.pupsp.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

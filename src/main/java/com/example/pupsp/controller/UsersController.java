@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.pupsp.entities.Users;
-import com.example.pupsp.repository.UsersService;
+import com.example.pupsp.repository.UsersRepository;
 
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -22,13 +22,13 @@ import org.springframework.validation.annotation.Validated;
 public class UsersController {
 
     @Autowired
-    private UsersService usersService;
+    private UsersRepository usersRepository;
 
     @GetMapping("/listUsers")
     public String listUsers(Model model) {
 
         try {
-            List<Users> listUsers = usersService.findAll();
+            List<Users> listUsers = usersRepository.findAll();
             model.addAttribute("Users", listUsers);
         } catch (Exception e) {
             System.out.println("Error: "+e);
@@ -57,14 +57,14 @@ public class UsersController {
             users.setRegisterDate(formattedDate); // Establecer fecha actual si es nulo
         }
 
-        usersService.save(users);
+        usersRepository.save(users);
         return "redirect:/listUsers";
     }
 
     @GetMapping("/editUsers/{id}")
     public String editUsers(@PathVariable int id, Model model) {
         try {
-            Optional<Users> user = usersService.findById(id);
+            Optional<Users> user = usersRepository.findById(id);
             model.addAttribute("Users", user.get());
         } catch (Exception e) {
             System.out.println("Error: "+e);
@@ -75,7 +75,7 @@ public class UsersController {
     @GetMapping("/deleteUsers/{id}")
     public String deleteUsers(@PathVariable int id) {
         try {
-            usersService.deleteById(id);
+            usersRepository.deleteById(id);
             System.out.println(id);
         } catch (Exception e) {
             System.out.println("Error: "+e);
