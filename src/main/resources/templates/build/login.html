@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,9 @@
     <link rel="stylesheet" href="logincss.css">
     <link rel="script" href="script.js">
 </head>
+
 <body>
+
     <header>
         <div class="logo">
             <img src="src/logo.png" alt="Logo Empresa">
@@ -19,13 +22,30 @@
             <a th:href="@{/login}" class="login-btn">Iniciar Sesión</a>
         </div>
     </header>
-    <div class="login-wrap">
-        <h2>Inicio de Sesión</h2>
-        
-        <div class="form">
-          <input type="text" placeholder="Usuario" name="un" />
-          <input type="password" placeholder="Contraseña" name="pw" />
-          <button> Iniciar Sesión </button>
-          <a href="register.html"> <p> ¿No tienes cuenta? Registrate </p></a>
+
+    <form name="USERS" th:action="@{/login}" method="post">
+        <div class="login-wrap">
+            <h2>Inicio de Sesión</h2>
+
+            <div class="form">
+                <input type="number" placeholder="Usuario" name="id" id="id" />
+                <input type="password" placeholder="Contraseña" name="password" id="password" />
+                <input type="submit" value="Iniciar Sesión" />
+                <button> Iniciar Sesión </button>
+                <a th:href="@{/register}">
+                    <p> ¿No tienes cuenta? Registrate </p>
+                </a>
+            </div>
         </div>
-      </div>
+    </form>
+
+    <div style="color: red;" th:if="${param.error}">
+        Invalid username and password.
+    </div>
+    <div style="color: red;" th:if="${param.logout}">
+        You have been logged out.
+    </div>
+
+</body>
+
+</html>
