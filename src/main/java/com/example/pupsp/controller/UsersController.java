@@ -58,7 +58,7 @@ public class UsersController {
         }
 
         usersRepository.save(users);
-        return "redirect:/listUsers";
+        return "redirect:/login";
     }
 
     @GetMapping("/editUsers/{id}")

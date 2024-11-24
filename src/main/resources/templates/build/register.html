@@ -21,11 +21,14 @@
     <div class="login-wrap">
         <h2>Registro</h2>
         <div class="form">
-          <input type="text" placeholder="Nombre" name="un" />
-          <input type="text" placeholder="Apellido" name="pw" />
-          <input type="email" placeholder="Correo electronico" name="email" />
-          <input type="password" placeholder="Contraseña" name="pw" />
-          <button> Iniciar Sesión </button>
-          <a href="login.html"> <p> ¿Ya tienes una cuenta? Inicia sesión </p></a>
+            <form name="USERS" th:action="@{/saveUsers}" method="post">
+                <input type="number" class="form-control" name="id" id="id" placeholder="cedula" aria-describedby="idHelp">
+                <input type="text" class="form-control" name="name" id="name" placeholder="nombre" aria-describedby="nameHelp">
+                <input type="text" class="form-control" name="lastName" id="lastName" placeholder="apellido" aria-describedby="emailHelp">
+                <input type="email" class="form-control" name="email" id="email" placeholder="email" aria-describedby="emailHelp">
+                <input type="password" class="form-control" name="password" id="password" placeholder="contraseña" aria-describedby="passwordHelp">
+                <button type="submit" class="btn btn-primary">Registrar</button>
+            </form>
+            <a href="login.html"> <p> ¿Ya tienes una cuenta? Inicia sesión </p></a>
         </div>
-      </div>
+    </div>

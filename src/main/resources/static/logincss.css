@@ -29,6 +29,7 @@ html {
       padding-top: 20px;
       
       input[type="text"],
+      input[type="number"],
       input[type="email"],
       input[type="password"],
       button {
@@ -42,6 +43,7 @@ html {
       }
       
       input[type="text"],
+      input[type="number"],
       input[type="email"],
       input[type="password"] {
         border: 1px solid #bbb;

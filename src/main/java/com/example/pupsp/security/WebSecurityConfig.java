@@ -47,13 +47,13 @@ public class WebSecurityConfig {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		http
 			.authorizeHttpRequests((requests) -> requests
-				.requestMatchers("/", "/home").permitAll()
+				.requestMatchers("/", "/home", "/register", "/saveUsers").permitAll()
                 .requestMatchers("/*.css", "/*.js", "/src/*.png", "/src/*.jpg", "/src/*.jpeg", "/src/*.gif", "/src/*.svg").permitAll()
 				.anyRequest().authenticated()
 			)
 			.formLogin((form) -> form
 				.loginPage("/login")
-                .defaultSuccessUrl("/", true)
+                .defaultSuccessUrl("/listUsers", true)
 				.permitAll()
 			)
 			.logout((logout) -> logout.permitAll());
