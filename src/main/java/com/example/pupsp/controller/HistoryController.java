@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.pupsp.entities.History;
-import com.example.pupsp.services.HistoryService;
+import com.example.pupsp.repository.HistoryService;
 
 @Controller
 public class HistoryController {

@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.pupsp.entities.Notifications;
-import com.example.pupsp.services.NotiService;
+import com.example.pupsp.repository.NotiService;
 
 @Controller
 public class NotiController {

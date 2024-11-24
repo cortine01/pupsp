@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.pupsp.entities.Houses;
-import com.example.pupsp.services.HousesService;
+import com.example.pupsp.repository.HousesService;
 
 @Controller
 public class HousesController {

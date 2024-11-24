@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.pupsp.entities.CompanyUtilities;
-import com.example.pupsp.services.CompanyUtilitiesService;
+import com.example.pupsp.repository.CompanyUtilitiesService;
 
 
 @Controller

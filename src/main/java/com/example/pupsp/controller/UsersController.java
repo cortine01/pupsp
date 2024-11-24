@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.pupsp.entities.Users;
-import com.example.pupsp.services.UsersService;
+import com.example.pupsp.repository.UsersService;
 
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
