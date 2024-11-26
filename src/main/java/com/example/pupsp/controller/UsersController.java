@@ -2,6 +2,7 @@ package com.example.pupsp.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.security.Principal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -82,5 +83,18 @@ public class UsersController {
         }
 
         return "redirect:/listUsers";
+    }
+
+    @GetMapping("/perfil")
+    public String perfil(Model model, Principal principal) {
+        try {
+            String email = principal.getName();
+            Users user = usersRepository.findByEmail(email);
+
+            model.addAttribute("User", user);
+        } catch (Exception e) {
+            System.out.println("Error: "+e);
+        }
+        return("build/myprofile");
     }
 }

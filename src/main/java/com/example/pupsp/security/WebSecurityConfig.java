@@ -53,7 +53,7 @@ public class WebSecurityConfig {
 			)
 			.formLogin((form) -> form
 				.loginPage("/login")
-                .defaultSuccessUrl("/bills", true)
+                .defaultSuccessUrl("/recibos", true)
 				.permitAll()
 			)
 			.logout((logout) -> logout.permitAll());

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://wwww.thymeleaf.org/thymeleaf-extras-springsecurity3"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="icon" href="src/icon.png" type="image/png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="recibostyles.css">
+    <link rel="script" href="script.js">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <header>
+        <div class="navbar">
+            <!-- Enlace a "Mis Recibos" -->
+            <a th:href="@{/recibos}" class="tab">Mis recibos</a>
+            <!-- Enlace a "Histórico" -->
+            <a th:href="@{/historial}" class="tab">Histórico</a>
+            <!-- Botón de notificaciones -->
+            <a href="notifications.html" id="icon-button"><i class="fa-solid fa-bell"></i></a>
+            <!-- Botón de usuario que abre el menú lateral -->
+            <div class="user-menu">
+                <a class="tab active" id="icon-button"><i class="fa-solid fa-circle-user"></i></a>
+                <div class="dropdown">
+                    <a class="tab active" th:href="@{/perfil}">Mi perfil</a>
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" value="Cerrar Sesión"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <!-- Contenedor de perfil -->
+    <main class="perfil-container">
+        <!-- Información del usuario -->
+        <div class="user-info">
+            <i class="fa-solid fa-circle-user user-icon"></i>
+            <div th:each="User:${User}">
+                <h2 id="user-name" th:text="${User.name} + ' ' +${User.lastName}"></h2>
+                <p id="user-email" th:text="${User.email}"></p>
+            </div>
+        </div>
+
+        <!-- Botones de opciones -->
+        <div class="user-options">
+            <a href="data.html" class="option-button">
+                <div class="left-content">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>
+                        <strong>Datos de la cuenta</strong>
+                        <p>Información asociada a tu cuenta.</p>
+                    </span>
+                </div>
+                <i class="fa-solid fa-chevron-right right-arrow"></i>
+            </a>
+            <a href="addresses.html" class="option-button">
+                <div class="left-content">
+                    <i class="fa-solid fa-map-marker-alt"></i>
+                    <span>
+                        <strong>Direcciones</strong>
+                        <p>Gestiona las direcciones asociadas a tu cuenta.</p>
+                    </span>
+                </div>
+                <i class="fa-solid fa-chevron-right right-arrow"></i>
+            </a>
+        </div>
+        
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

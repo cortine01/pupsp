@@ -22,7 +22,7 @@ public class BillsController {
     @Autowired
     private UsersRepository usersRepository;
 
-    @GetMapping("/bills")
+    @GetMapping("/recibos")
     public String listBills(Model model, Principal principal) {
         try {
             // Obtén el email del usuario logueado
