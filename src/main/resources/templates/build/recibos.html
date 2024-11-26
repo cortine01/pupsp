@@ -48,10 +48,10 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
             <tbody id="recibosBody">
                 <!-- Filas de ejemplo -->
                 <tr th:each="Bills:${Bills}">
-                    <td><font th:text="${Bills.companyUtility.name}"></font></td>
-                    <td><font th:text="${Bills.issueDate} + ' - ' + ${Bills.expirationDate}"></font></td>
-                    <td><font th:text="${Bills.expirationDate}"></font></td>
-                    <td><strong><font th:text="${Bills.cost}"></font></strong></td>
+                    <td th:text="${Bills.companyUtility.name}"></td>
+                    <td th:text="${Bills.issueDate} + ' - ' + ${Bills.expirationDate}"></td>
+                    <td th:text="${Bills.expirationDate}"></td>
+                    <td><strong th:text="${Bills.cost}"></strong></td>
                     <td><a href="pago.html" class="pay-button">Pagar</a></td>
                 </tr>
             </tbody>
