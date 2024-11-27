@@ -8,13 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.pupsp.entities.Notifications;
-import com.example.pupsp.repository.NotiService;
+import com.example.pupsp.repository.NotiRepository;
 
 @Controller
 public class NotiController {
 
     @Autowired
-    private NotiService notiService;
+    private NotiRepository notiService;
 
     @GetMapping("/listNotification")
     public String listNoti(Model model) {

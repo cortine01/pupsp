@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.example.pupsp.entities.CompanyUtilities;
 
 @Repository
-public interface CompanyUtilitiesService extends JpaRepository<CompanyUtilities, Integer>{
+public interface CompanyUtilitiesRepository extends JpaRepository<CompanyUtilities, Integer>{
 
 }

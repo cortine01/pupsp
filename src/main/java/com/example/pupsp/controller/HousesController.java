@@ -8,13 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.pupsp.entities.Houses;
-import com.example.pupsp.repository.HousesService;
+import com.example.pupsp.repository.HousesRepository;
 
 @Controller
 public class HousesController {
 
     @Autowired
-    private HousesService housesService;
+    private HousesRepository housesService;
 
     @GetMapping("/listHouses")
     public String listHouses(Model model) {

@@ -8,14 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.example.pupsp.entities.CompanyUtilities;
-import com.example.pupsp.repository.CompanyUtilitiesService;
+import com.example.pupsp.repository.CompanyUtilitiesRepository;
 
 
 @Controller
 public class CompanyUtilitiesController {
 
     @Autowired
-    private CompanyUtilitiesService companyUtilitiesService;
+    private CompanyUtilitiesRepository companyUtilitiesService;
 
     @GetMapping("/listCompanyUtilities")
     public String listCompanyUtilities(Model model) {

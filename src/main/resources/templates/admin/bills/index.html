@@ -11,6 +11,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <body style="text-align: center;">
     <h2>Table Bills</h2>
     <div style="width: 80%; margin: auto; padding: auto;">
+        <a th:href="@{/admin/addBill}"><button style="margin-bottom: 1rem;" class="btn btn-secondary" type="button">Add Bill</button></a>
 
         <table class="table table-dark table-striped">
             <thead>
@@ -19,9 +20,9 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
                 <th>Issue Date</th>
                 <th>Expiration Date</th>
                 <th>Pay Done</th>
-                <th>Users Id</th>
-                <th>Company Utilities Id</th>
-                <th>Houses Id</th>
+                <th>Users</th>
+                <th>Company Utilities</th>
+                <th>Houses</th>
             </thead>
             <tbody>
                 <tr th:each="Bills:${Bills}">
@@ -30,9 +31,9 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
                     <td><font th:text="${Bills.issueDate}"></font></td>
                     <td><font th:text="${Bills.expirationDate}"></font></td>
                     <td><font th:text="${Bills.payDone}"></font></td>
-                    <td><font th:text="${Bills.users_id}"></font></td>
-                    <td><font th:text="${Bills.companyUtilities_id}"></font></td>
-                    <td><font th:text="${Bills.houses_id}"></font></td>
+                    <td><font th:text="${Bills.user.name} + ' ' + ${Bills.user.lastName}"></font></td>
+                    <td><font th:text="${Bills.companyUtility.name}"></font></td>
+                    <td><font th:text="${Bills.house.adress}"></font></td>
                 </tr>
             </tbody>
         </table>
