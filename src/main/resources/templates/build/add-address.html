@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://wwww.thymeleaf.org/thymeleaf-extras-springsecurity3"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,17 +16,19 @@
     <header>
         <div class="navbar">
             <!-- Enlace a "Mis Recibos" -->
-            <a href="recibos.html" class="tab">Mis recibos</a>
+            <a th:href="@{/recibos}" class="tab">Mis recibos</a>
             <!-- Enlace a "Histórico" -->
-            <a href="historico.html" class="tab">Histórico</a>
+            <a th:href="@{/historial}" class="tab">Histórico</a>
             <!-- Botón de notificaciones -->
             <a href="notifications.html" id="icon-button"><i class="fa-solid fa-bell"></i></a>
             <!-- Botón de usuario que abre el menú lateral -->
             <div class="user-menu">
                 <a class="tab active" id="icon-button"><i class="fa-solid fa-circle-user"></i></a>
                 <div class="dropdown">
-                    <a href="myprofile.html">Mi perfil</a>
-                    <a href="logout.html">Cerrar Sesión</a>
+                    <a class="tab active" th:href="@{/perfil}">Mi perfil</a>
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" value="Cerrar Sesión"/>
+                    </form>
                 </div>
             </div>
         </div>
@@ -34,11 +38,12 @@
     <!-- Formulario de agregar dirección -->
     <main class="form-container">
         <h1>Agregar dirección</h1>
-        <form id="addressForm">
+        <form name="HOUSES" th:action="@{/saveAddresses}" method="post" onsubmit="combineAddress()">
             <div class="form-row">
+                <!-- Municipio -->
                 <div class="form-group">
-                    <label for="ciudad">Ciudad</label>
-                    <select id="ciudad" name="ciudad" required>
+                    <label for="municipio">Municipio</label>
+                    <select id="municipio" name="municipio" required>
                         <option value="">Seleccione</option>
                         <option value="Cúcuta">Cúcuta</option>
                         <option value="Los Patios">Los Patios</option>
@@ -46,6 +51,9 @@
                         <option value="Zulia">Zulia</option>
                     </select>
                 </div>
+
+                <!-- Texto de direccion -->
+                <input type="hidden" id="adress" name="adress">
                 <div class="form-group">
                     <label for="barrio">Barrio</label>
                     <input type="text" id="barrio" name="barrio" placeholder="Nombre del barrio" required>
@@ -75,16 +83,18 @@
                     </div>
                 </div>
             </div>
+            <!-- fin de direccion -->
 
+            <!-- Tipo de direccion -->
             <div class="form-row">
                 <label>Tipo de dirección</label>
                 <div class="radio-group">
                     <label>
-                        <input type="radio" name="tipoDireccion" value="0" required>
+                        <input type="radio" name="tipo" value="0" required>
                         <i class="fa-solid fa-house"></i> Casa
                     </label>
                     <label>
-                        <input type="radio" name="tipoDireccion" value="1" required>
+                        <input type="radio" name="tipo" value="1" required>
                         <i class="fa-solid fa-briefcase"></i> Trabajo
                     </label>
                 </div>
@@ -96,6 +106,22 @@
         </form>
     </main>
 
+    <script>
+        function combineAddress() {
+        // Obtener los valores de los campos
+        const barrio = document.getElementById('barrio').value;
+        const tipoCalle = document.getElementById('tipoCalle').value;
+        const calle = document.getElementById('calle').value;
+        const numeroCalle1 = document.getElementById('numeroCalle1').value;
+        const numeroCalle2 = document.getElementById('numeroCalle2').value;
+
+        // Combinar los valores en un formato adecuado
+        const fullAddress = `${barrio}, ${tipoCalle} ${calle} #${numeroCalle1}-${numeroCalle2}`;
+
+        // Asignar el valor al campo oculto
+        document.getElementById('adress').value = fullAddress;
+    }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -11,6 +11,8 @@ public class Houses {
     @Id
     private int id;
     private String adress;
+    private String municipio;
+    private int tipo;
 
     @ManyToOne
     @JoinColumn(name = "users_id", nullable = false)
@@ -19,9 +21,11 @@ public class Houses {
     public Houses() {
     }
 
-    public Houses(int id, String adress, Users user) {
+    public Houses(int id, String adress, String municipio, int tipo, Users user) {
         this.id = id;
         this.adress = adress;
+        this.municipio = municipio;
+        this.tipo = tipo;
         this.user = user;
     }
 
@@ -41,6 +45,22 @@ public class Houses {
         this.adress = adress;
     }
 
+    public String getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(String municipio) {
+        this.municipio = municipio;
+    }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
     public Users getUser() {
         return user;
     }
@@ -48,7 +68,6 @@ public class Houses {
     public void setUser(Users user) {
         this.user = user;
     }
-
     
     
 }

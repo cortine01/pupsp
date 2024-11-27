@@ -40,30 +40,20 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
         <!-- Lista de direcciones -->
         <div class="direcciones">
             <h2>Mis direcciones</h2>
-            <div class="direccion-card">
-                <i class="fa-solid fa-house icon"></i>
+            <div class="direccion-card" th:each="Houses:${Houses}">
+                <i class="fa-solid fa-house icon" th:if="${Houses.tipo == 0}"></i>
+                <i class="fa-solid fa-briefcase icon" th:if="${Houses.tipo == 1}"></i>
                 <div class="direccion-info">
-                    <strong>Calle 12 #34-23</strong>
-                    <p>Norte de Santander - Los Patios</p>
+                    <strong th:text="${Houses.adress}"></strong>
+                    <p>Norte de Santander - <span th:text="${Houses.municipio}"></span></p>
                 </div>
                 <div class="button-group">
                     <a href="edit-address.html" class="edit-button"><i class="fas fa-pen"></i> Editar dirección</a>
                 <button class="delete-button"><i class="fas fa-trash"></i> Borrar</button>
                 </div>
             </div>    
-            <div class="direccion-card">
-                <i class="fa-solid fa-briefcase icon"></i>
-                <div class="direccion-info">
-                    <strong>Avenida 0 #11-23</strong>
-                    <p>Norte de Santander – Cúcuta</p>
-                </div>
-                <div class="button-group">
-                    <a href="edit-address.html" class="edit-button"><i class="fas fa-pen"></i> Editar dirección</a>
-                    <button class="delete-button"><i class="fas fa-trash"></i> Borrar</button>
-                </div>
-            </div>
             <!-- Botón para agregar dirección -->
-            <a href="add-address.html" class="add-direccion">
+            <a th:href="@{/addAddresses}" class="add-direccion">
                 <div class="direccion-info">
                     <i class="fa-solid fa-plus"></i>
                     <span>Agregar dirección</span>
