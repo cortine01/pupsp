@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificaciones</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="recibostyles.css">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <header>
+        <div class="navbar">
+            <!-- Enlace a "Mis Recibos" -->
+            <a href="recibos.html" class="tab">Mis recibos</a>
+            <!-- Enlace a "Histórico" -->
+            <a href="historico.html" class="tab">Histórico</a>
+            <!-- Botón de notificaciones -->
+            <a href="notifications.html" class="tab active" id="icon-button"><i class="fa-solid fa-bell"></i></a>
+            <!-- Botón de usuario que abre el menú lateral -->
+            <div class="user-menu">
+                <a  id="icon-button"><i class="fa-solid fa-circle-user"></i></a>
+                <div class="dropdown">
+                    <a href="myprofile.html">Mi perfil</a>
+                    <a href="logout.html">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <!-- Contenedor de notificaciones -->
+    <main class="notifications-container">
+        <h1>Notificaciones</h1>
+        <div class="notifications-list">
+            <!-- Ejemplo de prueba -->
+            <div class="notification-card">
+                <div class="notification-content">
+                    <i class="notification-icon fa-solid fa-envelope"></i>
+                    <div>
+                        <p class="notification-title">Tienes un nuevo recibo</p>
+                        <p class="notification-description">Se emitió un nuevo recibo asociado a tu hogar. Aproximado para pago dentro de 15 días.</p>
+                    </div>
+                </div>
+                <div class="notification-date">
+                    <span>25-11-2024</span>
+                    <div class="dot"></div>
+                </div>
+            </div>
+
+            <div class="notification-card">
+                <div class="notification-content">
+                    <i class="notification-icon fa-solid fa-exclamation-circle"></i>
+                    <div>
+                        <p class="notification-title">Tu recibo está próximo a vencer</p>
+                        <p class="notification-description">Tu recibo de agua vencerá en menos de 7 días.</p>
+                    </div>
+                </div>
+                <div class="notification-date">
+                    <span>21-11-2024</span>
+                </div>
+            </div>
+
+            <div class="notification-card">
+                <div class="notification-content">
+                    <i class="notification-icon fa-solid fa-exclamation-circle"></i>
+                    <div>
+                        <p class="notification-title">Tu recibo está próximo a vencer</p>
+                        <p class="notification-description">Tu recibo de electricidad vencerá en 5 días.</p>
+                    </div>
+                </div>
+                <div class="notification-date">
+                    <span>19-11-2024</span>
+                </div>
+            </div>
+
+            <div class="notification-card">
+                <div class="notification-content">
+                    <i class="notification-icon fa-solid fa-exclamation-circle"></i>
+                    <div>
+                        <p class="notification-title">Tu recibo está próximo a vencer</p>
+                        <p class="notification-description">Tu recibo de gas vencerá en 3 días.</p>
+                    </div>
+                </div>
+                <div class="notification-date">
+                    <span>18-11-2024</span>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

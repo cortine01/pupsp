@@ -5,15 +5,14 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de Usuario</title>
+    <title>Direcciones</title>
     <link rel="icon" href="src/icon.png" type="image/png">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <link rel="stylesheet" href="recibostyles.css">
     <link rel="script" href="script.js">
 </head>
 <body>
+    <!-- Barra de navegación -->
     <!-- Barra de navegación -->
     <header>
         <div class="navbar">
@@ -37,41 +36,41 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
         </div>
     </header>
 
-    <!-- Contenedor de perfil -->
-    <main class="perfil-container">
-        <!-- Información del usuario -->
-        <div class="user-info">
-            <i class="fa-solid fa-circle-user user-icon"></i>
-            <div th:each="User:${User}">
-                <h2 id="user-name" th:text="${User.name} + ' ' +${User.lastName}"></h2>
-                <p id="user-email" th:text="${User.email}"></p>
+    <main class="container">
+        <!-- Lista de direcciones -->
+        <div class="direcciones">
+            <h2>Mis direcciones</h2>
+            <div class="direccion-card">
+                <i class="fa-solid fa-house icon"></i>
+                <div class="direccion-info">
+                    <strong>Calle 12 #34-23</strong>
+                    <p>Norte de Santander - Los Patios</p>
+                </div>
+                <div class="button-group">
+                    <a href="edit-address.html" class="edit-button"><i class="fas fa-pen"></i> Editar dirección</a>
+                <button class="delete-button"><i class="fas fa-trash"></i> Borrar</button>
+                </div>
+            </div>    
+            <div class="direccion-card">
+                <i class="fa-solid fa-briefcase icon"></i>
+                <div class="direccion-info">
+                    <strong>Avenida 0 #11-23</strong>
+                    <p>Norte de Santander – Cúcuta</p>
+                </div>
+                <div class="button-group">
+                    <a href="edit-address.html" class="edit-button"><i class="fas fa-pen"></i> Editar dirección</a>
+                    <button class="delete-button"><i class="fas fa-trash"></i> Borrar</button>
+                </div>
             </div>
-        </div>
-
-        <!-- Botones de opciones -->
-        <div class="user-options">
-            <a href="data.html" class="option-button">
-                <div class="left-content">
-                    <i class="fa-solid fa-file-lines"></i>
-                    <span>
-                        <strong>Datos de la cuenta</strong>
-                        <p>Información asociada a tu cuenta.</p>
-                    </span>
+            <!-- Botón para agregar dirección -->
+            <a href="add-address.html" class="add-direccion">
+                <div class="direccion-info">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Agregar dirección</span>
                 </div>
-                <i class="fa-solid fa-chevron-right right-arrow"></i>
-            </a>
-            <a th:href="@{/casas}" class="option-button">
-                <div class="left-content">
-                    <i class="fa-solid fa-map-marker-alt"></i>
-                    <span>
-                        <strong>Direcciones</strong>
-                        <p>Gestiona las direcciones asociadas a tu cuenta.</p>
-                    </span>
-                </div>
-                <i class="fa-solid fa-chevron-right right-arrow"></i>
-            </a>
+                <i class="fa-solid fa-chevron-right arrow"></i>
+            </a>     
         </div>
-        
     </main>
 
     <script src="script.js"></script>

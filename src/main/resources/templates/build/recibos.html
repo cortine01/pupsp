@@ -43,6 +43,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
                     <th>Prestadora de Servicio</th>
                     <th>Periodo de Facturación</th>
                     <th>Fecha de Vencimiento</th>
+                    <th>Dirección</th>
                     <th>Valor</th>
                     <th>Acción</th>
                 </tr>
@@ -53,6 +54,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
                     <td th:text="${Bills.companyUtility.name}"></td>
                     <td th:text="${Bills.issueDate} + ' - ' + ${Bills.expirationDate}"></td>
                     <td th:text="${Bills.expirationDate}"></td>
+                    <td th:text="${Bills.house.adress}"></td>
                     <td><strong th:text="'$' + ${Bills.cost}"></strong></td>
                     <td><a href="pago.html" class="pay-button">Pagar</a></td>
                 </tr>

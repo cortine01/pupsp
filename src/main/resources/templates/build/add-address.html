@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Dirección</title>
+    <link rel="icon" href="src/icon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="recibostyles.css">
+    <link rel="script" href="script.js">
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <header>
+        <div class="navbar">
+            <!-- Enlace a "Mis Recibos" -->
+            <a href="recibos.html" class="tab">Mis recibos</a>
+            <!-- Enlace a "Histórico" -->
+            <a href="historico.html" class="tab">Histórico</a>
+            <!-- Botón de notificaciones -->
+            <a href="notifications.html" id="icon-button"><i class="fa-solid fa-bell"></i></a>
+            <!-- Botón de usuario que abre el menú lateral -->
+            <div class="user-menu">
+                <a class="tab active" id="icon-button"><i class="fa-solid fa-circle-user"></i></a>
+                <div class="dropdown">
+                    <a href="myprofile.html">Mi perfil</a>
+                    <a href="logout.html">Cerrar Sesión</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <!-- Formulario de agregar dirección -->
+    <main class="form-container">
+        <h1>Agregar dirección</h1>
+        <form id="addressForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="ciudad">Ciudad</label>
+                    <select id="ciudad" name="ciudad" required>
+                        <option value="">Seleccione</option>
+                        <option value="Cúcuta">Cúcuta</option>
+                        <option value="Los Patios">Los Patios</option>
+                        <option value="Villa del Rosario">Villa del Rosario</option>
+                        <option value="Zulia">Zulia</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="barrio">Barrio</label>
+                    <input type="text" id="barrio" name="barrio" placeholder="Nombre del barrio" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="tipoCalle">Tipo de calle</label>
+                    <select id="tipoCalle" name="tipoCalle" required>
+                        <option value="">Seleccione</option>
+                        <option value="Calle">Calle</option>
+                        <option value="Avenida">Avenida</option>
+                        <option value="Manzana">Manzana</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="calle">Calle</label>
+                    <input type="text" id="calle" name="calle" placeholder="Ej: 12" required>
+                </div>
+                <div class="form-group form-number">
+                    <label for="numeroCalle">Número</label>
+                    <div class="number-inputs">
+                        <input type="text" id="numeroCalle1" name="numeroCalle1" placeholder="#" maxlength="3" required>
+                        <span>-</span>
+                        <input type="text" id="numeroCalle2" name="numeroCalle2" placeholder="#" maxlength="3" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <label>Tipo de dirección</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="tipoDireccion" value="0" required>
+                        <i class="fa-solid fa-house"></i> Casa
+                    </label>
+                    <label>
+                        <input type="radio" name="tipoDireccion" value="1" required>
+                        <i class="fa-solid fa-briefcase"></i> Trabajo
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button">
+                <i class="fa-solid fa-plus"></i> Agregar dirección
+            </button>
+        </form>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

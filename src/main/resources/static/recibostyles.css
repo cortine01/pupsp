@@ -9,9 +9,11 @@ body {
 /* Barra de navegación */
 .navbar {
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: space-between;
     background-color: #333;
-    padding: 10px;
+    padding: 0 20px;
+    height: 60px;
 }
 
 .tab, #icon-button {
@@ -219,7 +221,7 @@ body {
     margin-bottom: 1%;
     border-radius: 10px;
     width: 100%;
-    max-width: 400px;
+    max-width: 700px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative;
 }
@@ -245,80 +247,52 @@ body {
     color: #666;
     margin: 0;
 }
-
-/* Menú desplegable */
-.menu-container {
-    position: relative;
-    display: inline-block;
+/*Button-Group*/
+.button-group {
+    display: flex;
+    gap: 10px;
 }
 
-/* Botón de tres puntos */
-.menu-button {
-    background: none;
+.button-group a,
+.button-group button {
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
     border: none;
     cursor: pointer;
-    font-size: 18px;
-    color: #333;
-    padding: 5px;
+    text-align: center;
 }
 
-/* Menú desplegable oculto por defecto */
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%; /* Aparece justo debajo del botón */
-    right: 0; /* Alineado a la derecha */
-    background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    overflow: hidden;
-    z-index: 10;
+.edit-button {
+    background-color: #d32f2f;
 }
 
-/* Estilo de las opciones del menú */
-.dropdown-menu a {
-    display: flex;
-    align-items: center;
-    padding: 10px 15px;
-    color: #333;
-    text-decoration: none;
-    font-size: 14px;
-    border-bottom: 1px solid #ddd;
-    transition: background-color 0.3s ease;
+.manage-button {
+    background-color: #1976d2;
 }
 
-.dropdown-menu a:last-child {
-    border-bottom: none;
+.delete-button {
+    background-color: #b71c1c;
 }
-
-.dropdown-menu a:hover {
-    background-color: #f5f5f5;
-}
-
-/* Íconos de las opciones */
-.dropdown-menu a i {
-    margin-right: 8px;
-    font-size: 16px;
-    color: #555;
-}
-
 
 /* Botón para agregar dirección (estilo tarjeta) */
 .add-direccion {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Flecha a la derecha */
+    justify-content: space-between; 
     background-color: #fff;
     padding: 10px 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-top: 15px;
     width: 100%;
-    max-width: 400px; /* Ancho máximo */
+    max-width: 700px; 
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-decoration: none; /* Quita subrayado */
-    color: #e53935; /* Color del texto */
+    text-decoration: none; 
+    color: #e53935; 
     position: relative;
     text-decoration: none;
     transition: background-color 0.3s ease;
@@ -405,7 +379,7 @@ form .number-inputs {
     gap: 10px;
     width: 100%;
     padding: 10px;
-    background-color: #e60000;
+    background-color: #e53935;
     color: #fff;
     font-size: 16px;
     border: none;
@@ -415,5 +389,243 @@ form .number-inputs {
 }
 
 .submit-button:hover {
-    background-color: #6b0000;
+    background-color: #d61010;
+}
+/*Notificaciones*/
+.notifications-container {
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notification-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.notification-card:hover {
+    background-color: #f0f0f0;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.notification-icon {
+    font-size: 20px;
+    color: #555;
+}
+
+.notification-title {
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.notification-description {
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+}
+
+.notification-date {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+.notification-date .dot {
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    border-radius: 50%;
+}
+/* Bills-Container Styles */
+.bills-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.recibo-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+/* Recibo Card Styles */
+.recibo-card {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 10px;
+    max-width: 200px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.recibo-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 15px;
+    font-size: 24px;
+    color: white;
+}
+
+.recibo-icon.agua {
+    background-color: #2196F3;
+}
+
+.recibo-icon.electricidad {
+    background-color: #FFC107;
+}
+
+.recibo-icon.gas {
+    background-color: #FF5722;
+}
+
+.recibo-info strong {
+    font-size: 16px;
+    color: #333;
+}
+
+.recibo-info p {
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Add Recibo Button */
+.add-recibo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    background-color: #fff;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 15px;
+    width: 100%;
+    max-width: 200px; 
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-decoration: none; 
+    color: #e53935; 
+    position: relative;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.add-recibo i {
+    margin-right: 5px;
+}
+
+.add-recibo:hover {
+    text-decoration: non;
+}
+
+/*Editar informacion estilos*/
+.data-edit-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Form Styles */
+.data-edit-form {
+    width: 100%;
+}
+
+.data-edit-row {
+    display: grid;
+    grid-template-columns: auto auto; /* Dos columnas de igual tamaño */
+    gap: 20px; /* Espaciado entre columnas */
+}
+
+.data-edit-group {
+    flex: 1;
+    margin-right: 10px;
+    text-align: left;
+    margin-bottom: 15px;
+}
+.data-edit-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.data-edit-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.data-edit-group input:focus {
+    outline: none;
+    border-color: #d32f2f;
+    box-shadow: 0 0 3px rgba(211, 47, 47, 0.5);
+}
+
+/* Submit Button */
+.data-edit-btn-submit {
+    background-color: #d32f2f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.data-edit-btn-submit i {
+    margin-right: 5px;
+}
+
+.data-edit-btn-submit:hover {
+    background-color: #b71c1c;
 }

@@ -27,4 +27,16 @@ public class HousesController {
 
         return "admin/houses/index";
     }
+
+    @GetMapping("/casas")
+    public String buildHouses(Model model) {
+        try {
+            List<Houses> listHouses = housesService.findAll();
+            model.addAttribute("Houses", listHouses);
+        } catch (Exception e) {
+            System.out.println("Error: "+e);
+        }
+
+        return "build/addresses";
+    }
 }
