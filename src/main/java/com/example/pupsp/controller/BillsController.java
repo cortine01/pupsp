@@ -20,6 +20,8 @@ import com.example.pupsp.repository.BillsRepository;
 import com.example.pupsp.repository.CompanyUtilitiesRepository;
 import com.example.pupsp.repository.HousesRepository;
 import com.example.pupsp.repository.UsersRepository;
+import com.example.pupsp.service.NotiService;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -39,6 +41,9 @@ public class BillsController {
     @Autowired
     private HousesRepository housesRepository;
 
+    @Autowired
+    private NotiService notiService;
+
     @GetMapping("/recibos")
     public String listBillsUser(Model model, Principal principal) {
         try {
@@ -48,10 +53,7 @@ public class BillsController {
             // Busca el usuario por su email
             Users user = usersRepository.findByEmail(email);
 
-            List<Bills> listBills = billsRepository.findByUser(user);
-
-
-            System.out.println("LLegue");
+            List<Bills> listBills = billsRepository.findByUserAndPayDone(user, 0);
 
             model.addAttribute("Bills", listBills);
         } catch (Exception e) {
@@ -111,9 +113,15 @@ public class BillsController {
 
             // Establecer la fecha de expiración
             bills.setExpirationDate(formattedExpirationDate);
+            
         }
-
+        
         billsRepository.save(bills);
+
+        //Crear notificacion
+        String message = "Nueva factura generada de la empresa: " + bills.getCompanyUtility().getName() + " y con una fecha de vencimiento de " + bills.getExpirationDate() + " ¡revisala cuanto antes!";
+        Users user = bills.getUser(); // Asegúrate de que la entidad Bills tenga una relación con Users
+        notiService.createNotification(message, 1, user);
         return "redirect:/recibos";
     }
 

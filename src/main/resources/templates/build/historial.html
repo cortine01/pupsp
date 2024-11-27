@@ -44,7 +44,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
                     <th>Periodo de Facturación</th>
                     <th>Fecha de Pago</th>
                     <th>Valor</th>
-                    <th>Metodo</th>
+                    <!-- <th>Metodo</th> -->
                 </tr>
             </thead>
             <tbody id="historico-body">
@@ -53,7 +53,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
                     <td th:text="${History.bills.issueDate} + ' - ' + ${History.bills.expirationDate}"></td>
                     <td><strong th:text="${History.paymentDate}"></strong></td>
                     <td th:text="'$' + ${History.bills.cost}"></td>
-                    <td th:text="${History.paymentmethod}"></td>
+                    <!-- <td th:text="${History.paymentmethod}"></td> -->
                 </tr>
             </tbody>
         </table>

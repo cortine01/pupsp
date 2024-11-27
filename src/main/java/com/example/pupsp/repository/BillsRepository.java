@@ -15,4 +15,6 @@ public interface BillsRepository extends JpaRepository<Bills, Integer>{
     List<Bills> findByUser(Users user);
     List<Bills> findByCompanyUtility(CompanyUtilities companyUtility);
     List<Bills> findByHouse(Houses house);
+    List<Bills> findByPayDone(int payDone);
+    List<Bills> findByUserAndPayDone(Users user, int payDone);
 }

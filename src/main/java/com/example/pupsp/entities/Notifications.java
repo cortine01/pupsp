@@ -12,6 +12,7 @@ public class Notifications {
     private int id;
     private String massage;
     private String chipingDate;
+    private int type;
     
     @ManyToOne
     @JoinColumn(name = "users_id", nullable = false)
@@ -20,10 +21,11 @@ public class Notifications {
     public Notifications() {
     }
 
-    public Notifications(int id, String massage, String chipingDate, Users user) {
+    public Notifications(int id, String massage, String chipingDate, int type, Users user) {
         this.id = id;
         this.massage = massage;
         this.chipingDate = chipingDate;
+        this.type = type;
         this.user = user;
     }
 
@@ -51,6 +53,14 @@ public class Notifications {
         this.chipingDate = chipingDate;
     }
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
     public Users getUser() {
         return user;
     }
@@ -58,7 +68,4 @@ public class Notifications {
     public void setUser(Users user) {
         this.user = user;
     }
-
-    
-    
 }
