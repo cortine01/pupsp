@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://wwww.thymeleaf.org/thymeleaf-extras-springsecurity3"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,17 +15,19 @@
     <header>
         <div class="navbar">
             <!-- Enlace a "Mis Recibos" -->
-            <a href="recibos.html" class="tab">Mis recibos</a>
+            <a th:href="@{/recibos}" class="tab">Mis recibos</a>
             <!-- Enlace a "Histórico" -->
-            <a href="historico.html" class="tab">Histórico</a>
+            <a th:href="@{/historial}" class="tab">Histórico</a>
             <!-- Botón de notificaciones -->
-            <a href="notifications.html" class="tab active" id="icon-button"><i class="fa-solid fa-bell"></i></a>
+            <a th:href="@{/notificacion}"  class="tab active" id="icon-button"><i class="fa-solid fa-bell"></i></a>
             <!-- Botón de usuario que abre el menú lateral -->
             <div class="user-menu">
-                <a  id="icon-button"><i class="fa-solid fa-circle-user"></i></a>
+                <a class="tab" id="icon-button"><i class="fa-solid fa-circle-user"></i></a>
                 <div class="dropdown">
-                    <a href="myprofile.html">Mi perfil</a>
-                    <a href="logout.html">Cerrar Sesión</a>
+                    <a class="tab active" th:href="@{/perfil}">Mi perfil</a>
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" value="Cerrar Sesión"/>
+                    </form>
                 </div>
             </div>
         </div>
@@ -34,21 +39,22 @@
         <h1>Notificaciones</h1>
         <div class="notifications-list">
             <!-- Ejemplo de prueba -->
-            <div class="notification-card">
+            <div class="notification-card" th:each="Notifications:${Notifications}">
                 <div class="notification-content">
-                    <i class="notification-icon fa-solid fa-envelope"></i>
+                    <!-- <i class="notification-icon fa-solid fa-envelope"></i> -->
+                    <i class="notification-icon fa-solid fa-exclamation-circle"></i>
                     <div>
                         <p class="notification-title">Tienes un nuevo recibo</p>
-                        <p class="notification-description">Se emitió un nuevo recibo asociado a tu hogar. Aproximado para pago dentro de 15 días.</p>
+                        <p class="notification-description" th:text="${Notifications.massage}"></p>
                     </div>
                 </div>
                 <div class="notification-date">
-                    <span>25-11-2024</span>
-                    <div class="dot"></div>
+                    <span th:text="${Notifications.chipingDate}"></span>
+                    <!-- <div class="dot"></div> -->
                 </div>
             </div>
 
-            <div class="notification-card">
+            <!-- <div class="notification-card">
                 <div class="notification-content">
                     <i class="notification-icon fa-solid fa-exclamation-circle"></i>
                     <div>
@@ -85,7 +91,7 @@
                 <div class="notification-date">
                     <span>18-11-2024</span>
                 </div>
-            </div>
+            </div> -->
         </div>
     </main>
 </body>

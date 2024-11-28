@@ -20,12 +20,12 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
             <!-- Enlace a "Histórico" -->
             <a th:href="@{/historial}" class="tab">Histórico</a>
             <!-- Botón de notificaciones -->
-            <a href="notifications.html" id="icon-button"><i class="fa-solid fa-bell"></i></a>
+            <a th:href="@{/notificacion}" id="icon-button"><i class="fa-solid fa-bell"></i></a>
             <!-- Botón de usuario que abre el menú lateral -->
             <div class="user-menu">
-                <a id="icon-button"><i class="fa-solid fa-circle-user"></i></a>
+                <a class="tab" id="icon-button"><i class="fa-solid fa-circle-user"></i></a>
                 <div class="dropdown">
-                    <a th:href="@{/perfil}">Mi perfil</a>
+                    <a class="tab active" th:href="@{/perfil}">Mi perfil</a>
                     <form th:action="@{/logout}" method="post">
                         <input type="submit" value="Cerrar Sesión"/>
                     </form>
@@ -56,7 +56,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
                     <td th:text="${Bills.expirationDate}"></td>
                     <td th:text="${Bills.house.adress}"></td>
                     <td><strong th:text="'$' + ${Bills.cost}"></strong></td>
-                    <td><a href="pago.html" class="pay-button">Pagar</a></td>
+                    <td><a href="#" class="pay-button">Pagar</a></td>
                 </tr>
             </tbody>
         </table>
