@@ -13,11 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.pupsp.entities.Bills;
 import com.example.pupsp.entities.Houses;
 import com.example.pupsp.entities.Users;
-import com.example.pupsp.repository.BillsRepository;
-import com.example.pupsp.repository.HistoryRepository;
 import com.example.pupsp.repository.HousesRepository;
 import com.example.pupsp.repository.UsersRepository;
 import com.example.pupsp.service.HousesService;
@@ -25,12 +22,6 @@ import com.example.pupsp.service.HousesService;
 
 @Controller
 public class HousesController {
-
-    @Autowired
-    private HistoryRepository historyRepository;
-
-    @Autowired
-    private BillsRepository billRepository;
 
     @Autowired
     private HousesRepository housesService;
