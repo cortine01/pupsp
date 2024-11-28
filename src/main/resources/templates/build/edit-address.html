@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://wwww.thymeleaf.org/thymeleaf-extras-springsecurity3"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,17 +16,19 @@
     <header>
         <div class="navbar">
             <!-- Enlace a "Mis Recibos" -->
-            <a href="recibos.html" class="tab">Mis recibos</a>
+            <a th:href="@{/recibos}" class="tab">Mis recibos</a>
             <!-- Enlace a "Histórico" -->
-            <a href="historico.html" class="tab">Histórico</a>
+            <a th:href="@{/historial}" class="tab">Histórico</a>
             <!-- Botón de notificaciones -->
             <a href="notifications.html" id="icon-button"><i class="fa-solid fa-bell"></i></a>
             <!-- Botón de usuario que abre el menú lateral -->
             <div class="user-menu">
                 <a class="tab active" id="icon-button"><i class="fa-solid fa-circle-user"></i></a>
                 <div class="dropdown">
-                    <a href="myprofile.html">Mi perfil</a>
-                    <a href="logout.html">Cerrar Sesión</a>
+                    <a class="tab active" th:href="@{/perfil}">Mi perfil</a>
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" value="Cerrar Sesión"/>
+                    </form>
                 </div>
             </div>
         </div>
@@ -33,69 +37,92 @@
 
     <!-- Formulario de agregar dirección -->
     <main class="form-container">
-        <h1>Editar dirección</h1>
-        <form id="addressForm">
+        <h1>Agregar dirección</h1>
+        <form name="HOUSES" th:action="@{/saveAddresses}" method="post" onsubmit="combineAddress()" th:object="${Houses}">
             <div class="form-row">
+                <!-- Municipio -->
                 <div class="form-group">
-                    <label for="ciudad">Ciudad</label>
-                    <select id="ciudad" name="ciudad" required>
-                        <option value="">Seleccione</option>
-                        <option value="Cúcuta">Cúcuta</option>
-                        <option value="Los Patios">Los Patios</option>
-                        <option value="Villa del Rosario">Villa del Rosario</option>
-                        <option value="Zulia">Zulia</option>
+                    <label for="municipio">Municipio</label>
+                    <select id="municipio" name="municipio" required>
+                        <option value="Cúcuta" th:selected="*{municipio == 'Cúcuta'}">Cúcuta</option>
+                        <option value="Los Patios" th:selected="*{municipio == 'Los Patios'}">Los Patios</option>
+                        <option value="Villa del Rosario" th:selected="*{municipio == 'Villa del Rosario'}">Villa del Rosario</option>
+                        <option value="Zulia" th:selected="*{municipio == 'Zulia'}">Zulia</option>
                     </select>
                 </div>
+
+                <!-- Texto de direccion -->
+                <input type="hidden" id="adress" name="adress">
+                <input type="hidden" th:value="${Houses.id}" name="id"/>
                 <div class="form-group">
                     <label for="barrio">Barrio</label>
-                    <input type="text" id="barrio" name="barrio" placeholder="Nombre del barrio" required>
+                    <input type="text" id="barrio" name="barrio" placeholder="Nombre del barrio" required th:value="${barrio}">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label for="tipoCalle">Tipo de calle</label>
-                    <select id="tipoCalle" name="tipoCalle" required>
-                        <option value="">Seleccione</option>
-                        <option value="Calle">Calle</option>
-                        <option value="Avenida">Avenida</option>
-                        <option value="Manzana">Manzana</option>
+                    <select id="tipoCalle" name="tipoCalle" required th:value="${tipoCalle}">
+                        <option value="Calle" th:selected="${tipoCalle == 'Calle'}">Calle</option>
+                        <option value="Avenida" th:selected="${tipoCalle == 'Avenida'}">Avenida</option>
+                        <option value="Manzana" th:selected="${tipoCalle == 'Manzana'}">Manzana</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="calle">Calle</label>
-                    <input type="text" id="calle" name="calle" placeholder="Ej: 12" required>
+                    <input type="text" id="calle" name="calle" placeholder="Ej: 12" required th:value="${calle}">
                 </div>
                 <div class="form-group form-number">
                     <label for="numeroCalle">Número</label>
                     <div class="number-inputs">
-                        <input type="text" id="numeroCalle1" name="numeroCalle1" placeholder="#" maxlength="3" required>
+                        <input type="text" id="numeroCalle1" name="numeroCalle1" placeholder="#" maxlength="3" required th:value="${numeroCalle1}">
                         <span>-</span>
-                        <input type="text" id="numeroCalle2" name="numeroCalle2" placeholder="#" maxlength="3" required>
+                        <input type="text" id="numeroCalle2" name="numeroCalle2" placeholder="#" maxlength="3" required th:value="${numeroCalle2}">
                     </div>
                 </div>
             </div>
+            <!-- fin de direccion -->
 
+            <!-- Tipo de direccion -->
             <div class="form-row">
                 <label>Tipo de dirección</label>
                 <div class="radio-group">
                     <label>
-                        <input type="radio" name="tipoDireccion" value="0" required>
+                        <input type="radio" name="tipo" value="0" required th:if="*{tipo == 0}" checked>
+                        <input type="radio" name="tipo" value="0" required th:if="*{tipo != 0}">
                         <i class="fa-solid fa-house"></i> Casa
                     </label>
                     <label>
-                        <input type="radio" name="tipoDireccion" value="1" required>
+                        <input type="radio" name="tipo" value="1" required th:if="*{tipo == 1}" checked>
+                        <input type="radio" name="tipo" value="1" required th:if="*{tipo != 1}">
                         <i class="fa-solid fa-briefcase"></i> Trabajo
                     </label>
                 </div>
             </div>
 
             <button type="submit" class="submit-button">
-                <i class="fas fa-pen"></i> Editar dirección
+                <i class="fa-solid fa-plus"></i> Agregar dirección
             </button>
         </form>
     </main>
 
+    <script>
+        function combineAddress() {
+        // Obtener los valores de los campos
+        const barrio = document.getElementById('barrio').value;
+        const tipoCalle = document.getElementById('tipoCalle').value;
+        const calle = document.getElementById('calle').value;
+        const numeroCalle1 = document.getElementById('numeroCalle1').value;
+        const numeroCalle2 = document.getElementById('numeroCalle2').value;
+
+        // Combinar los valores en un formato adecuado
+        const fullAddress = `${barrio}, ${tipoCalle} ${calle} ${numeroCalle1}-${numeroCalle2}`;
+
+        // Asignar el valor al campo oculto
+        document.getElementById('adress').value = fullAddress;
+    }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

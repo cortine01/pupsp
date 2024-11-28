@@ -48,8 +48,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
                     <p>Norte de Santander - <span th:text="${Houses.municipio}"></span></p>
                 </div>
                 <div class="button-group">
-                    <a href="edit-address.html" class="edit-button"><i class="fas fa-pen"></i> Editar dirección</a>
-                <button class="delete-button"><i class="fas fa-trash"></i> Borrar</button>
+                    <a th:href="@{/editAddresses?id=}+${Houses.id}" class="edit-button"><i class="fas fa-pen"></i> Editar dirección</a>
+                <button class="delete-button" th:href="@{/deleteAddresses/}+${Houses.id}"><i class="fas fa-trash"></i> Borrar</button>
                 </div>
             </div>    
             <!-- Botón para agregar dirección -->
