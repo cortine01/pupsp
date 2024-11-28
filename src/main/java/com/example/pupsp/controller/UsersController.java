@@ -59,11 +59,11 @@ public class UsersController {
         }
 
         usersRepository.save(users);
-        return "redirect:/login";
+        return "redirect:/perfil";
     }
 
-    @GetMapping("/editUsers/{id}")
-    public String editUsers(@PathVariable int id, Model model) {
+    @GetMapping("/admin/editUsers/{id}")
+    public String adminEditUsers(@PathVariable int id, Model model) {
         try {
             Optional<Users> user = usersRepository.findById(id);
             model.addAttribute("Users", user.get());
@@ -96,5 +96,19 @@ public class UsersController {
             System.out.println("Error: "+e);
         }
         return("build/myprofile");
+    }
+
+    @GetMapping("/editUsers")
+    public String EditUsers(Model model, Principal principal) {
+        try {
+            String email = principal.getName();
+
+            Users user = usersRepository.findByEmail(email);
+
+            model.addAttribute("Users", user);
+        } catch (Exception e) {
+            System.out.println("Error: "+e);
+        }
+        return "build/edit-data";
     }
 }
