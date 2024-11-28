@@ -11,4 +11,5 @@ import com.example.pupsp.entities.History;
 @Repository
 public interface HistoryRepository extends JpaRepository<History, Integer>{
     List<History> findByBills(Bills bills);
+    void deleteByBillsId(int billsId);
 }

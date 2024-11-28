@@ -49,7 +49,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
                 </div>
                 <div class="button-group">
                     <a th:href="@{/editAddresses?id=}+${Houses.id}" class="edit-button"><i class="fas fa-pen"></i> Editar dirección</a>
-                <button class="delete-button" th:href="@{/deleteAddresses/}+${Houses.id}"><i class="fas fa-trash"></i> Borrar</button>
+                <a class="delete-button" th:href="@{/deleteAddresses/}+${Houses.id}"><i class="fas fa-trash"></i> Borrar</a>
                 </div>
             </div>    
             <!-- Botón para agregar dirección -->
