@@ -35,8 +35,11 @@ Permite a los usuarios **registrar, consultar y administrar** sus recibos de man
 
 A continuación, puedes añadir capturas de pantalla de la aplicación para ilustrar su uso:
 
-1. **Página de Inicio / Login**
-   ![Screenshot Login](./screenshots/login.png)
+1. **Página de Inicio**
+   ![Screenshot home](./screenshots/home.png)
+
+1. **Página de Login**
+![Screenshot Login](./screenshots/login.png)
 
 2. **Listado de Recibos**
    ![Screenshot Listado](./screenshots/recibos.png)
