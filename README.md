@@ -39,10 +39,13 @@ A continuación, puedes añadir capturas de pantalla de la aplicación para ilus
    ![Screenshot Login](./screenshots/login.png)
 
 2. **Listado de Recibos**
-   ![Screenshot Listado](./screenshots/listado.png)
+   ![Screenshot Listado](./screenshots/recibos.png)
 
 3. **Formulario de Nuevo Recibo**
-   ![Screenshot Formulario](./screenshots/nuevo-recibo.png)
+   ![Screenshot Formulario](./screenshots/Addbill.png)
+
+3. **Perfil de usuario**
+![Screenshot usuario](./screenshots/usuario.png)
 
 ---
 
